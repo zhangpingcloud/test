@@ -37,7 +37,7 @@ export default{
         <div class="modal" :style="{left: config.x + 'px', top: config.y + 'px'}">
             <h1 class="modal-title">{{config.title}}</h1>
             <div class="modal-content">
-                <slot>暂无内容</slot>
+                <slot :readonly="config.type === 3">暂无内容</slot>
             </div>
             <div class="modal-operation">
                 <button @click="closeModal">关闭</button>

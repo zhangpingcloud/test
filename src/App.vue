@@ -1,15 +1,19 @@
 <script>
 // import Card from './components/Card.vue';
-import Component08171 from './views/08-17/01作业.vue';
+// import Component08171 from './views/08-17/01作业.vue';
+// import Component08172 from './views/08-17/02Props.vue';
+import Layout from './layout/index.vue';
 export default {
   props: [],
   components: {
     // Card
-    Component08171
+    // Component08171
+    // Component08172
+    Layout
   },
   data(){
     return {
-      // title: '通过Vite构建工具启动vue项目',
+      title: '通过Vite构建工具启动vue项目',
       // project_list: [
       //   {
       //     title: '英雄联盟',
@@ -27,7 +31,9 @@ export default {
     }
   },
   methods: {
+    change(data){
 
+    }
   },
 }
 </script>
@@ -39,7 +45,20 @@ export default {
     <div class="card">
 
     </div> -->
-    <Component08171 />
+    <!-- <Component08171 /> -->
+    <!-- <Component08172 :age="58" v-on:changeData="change">
+      
+       <template v-for="i in 10">
+          <img v-if="i % 2"  src="./images/add-circle.png" width="16">
+       </template>
+       <span>新增</span>
+    </Component08172> -->
+    <Layout>
+      <!-- 路由 -->
+      <div style="width: 30px;height: 3000px;background-color: red;">
+
+      </div>
+    </Layout>
 </template>
 
 <style>

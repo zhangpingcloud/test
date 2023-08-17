@@ -41,7 +41,7 @@ export default {
                 x: 0,
                 y: 0
             },
-            
+
         }
     },
     methods: {
@@ -55,6 +55,9 @@ export default {
             this.modal_config.title = '新增用户';
             this.modal_config.type = 1;
             this.modal_form.user_id = '';
+            this.modal_form.user_name = '';
+            this.modal_form.user_address = '';
+            this.modal_form.user_birth = '';
             this.getModalArea(e);
             this.$refs.modal.modal_show = true;
         },
@@ -62,6 +65,9 @@ export default {
             this.modal_config.title = '查看用户';
             this.modal_config.type = 3;
             this.modal_form.user_id = item.id;
+            this.modal_form.user_name = item.name;
+            this.modal_form.user_address = item.address;
+            this.modal_form.user_birth = item.birthday;
             this.getModalArea(e);
             this.$refs.modal.modal_show = true;
         },
@@ -93,7 +99,7 @@ export default {
             // }
         },
         // 获取modal出现时的坐标
-        getModalArea({screenX: x, screenY: y}){
+        getModalArea({ screenX: x, screenY: y }) {
             this.modal_config.x = x;
             this.modal_config.y = y;
         }
@@ -173,26 +179,28 @@ export default {
             </table>
         </div>
         <modal ref="modal" :config="modal_config" @save="saveModalForm">
-            <form class="modal-form" action="">
-                <p>
-                    <label for="">
-                        姓名：
-                        <input v-model="modal_form.user_name" type="text" placeholder="请输入...">
-                    </label>
-                </p>
-                <p>
-                    <label for="">
-                        地址：
-                        <input v-model="modal_form.user_address" type="text" placeholder="请输入...">
-                    </label>
-                </p>
-                <p>
-                    <label for="">
-                        生日：
-                        <input v-model="modal_form.user_birth" type="date" placeholder="请选择...">
-                    </label>
-                </p>
-            </form>
+            <template #default="slot_data">
+                <form class="modal-form" action="">
+                    <p>
+                        <label for="">
+                            姓名：
+                            <input :readonly="slot_data.readonly" v-model="modal_form.user_name" type="text" placeholder="请输入...">
+                        </label>
+                    </p>
+                    <p>
+                        <label for="">
+                            地址：
+                            <input :readonly="slot_data.readonly" v-model="modal_form.user_address" type="text" placeholder="请输入...">
+                        </label>
+                    </p>
+                    <p>
+                        <label for="">
+                            生日：
+                            <input :readonly="slot_data.readonly" v-model="modal_form.user_birth" type="date" placeholder="请选择...">
+                        </label>
+                    </p>
+                </form>
+            </template>
         </modal>
     </div>
 
