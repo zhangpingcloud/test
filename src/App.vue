@@ -3,17 +3,22 @@
 // import Component08171 from './views/08-17/01作业.vue';
 // import Component08172 from './views/08-17/02Props.vue';
 import Layout from './layout/index.vue';
+import LayoutAside from './layout/aside.vue';
+import LayoutHeader from './layout/header.vue';
 export default {
   props: [],
   components: {
     // Card
     // Component08171
     // Component08172
-    Layout
+    Layout,
+    LayoutAside,
+    LayoutHeader
   },
   data(){
     return {
       title: '通过Vite构建工具启动vue项目',
+      is_collapse: false
       // project_list: [
       //   {
       //     title: '英雄联盟',
@@ -33,6 +38,9 @@ export default {
   methods: {
     change(data){
 
+    },
+    changeCollapse(data){
+      this.is_collapse = data.is_collapse;
     }
   },
 }
@@ -53,11 +61,17 @@ export default {
        </template>
        <span>新增</span>
     </Component08172> -->
-    <Layout>
+    <Layout :is_collapse="is_collapse">
       <!-- 路由 -->
-      <div style="width: 30px;height: 3000px;background-color: red;">
+      <!-- <div style="width: 30px;height: 3000px;background-color: red;">
 
-      </div>
+      </div> -->
+      <template v-slot:layout-aside>
+        <layout-aside :is_collapse="is_collapse" />
+      </template>
+      <template v-slot:layout-header>
+        <layout-header @handleClickOnHeaderIcon="changeCollapse" :is_collapse="is_collapse" />
+      </template>
     </Layout>
 </template>
 

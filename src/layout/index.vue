@@ -1,9 +1,23 @@
 <script>
+export default{
+    props: {
+        is_collapse: {
+            type: Boolean,
+            default: () => false
+        }
+    },
+    data(){
+        return {
+            // is_collapse: false
+        }
+    },
+    
+}
 </script>
 <template>
     <div id="layout">
         <!-- 两栏布局，左侧固定，右侧自适应 -->
-        <div id="layout-left">
+        <div id="layout-left" :style="{ width: is_collapse ? '65px': '240px'}">
             <slot name="layout-aside"></slot>
         </div>
         <div id="layout-right">
@@ -39,6 +53,8 @@
     width: 240px;
     background-color: #001428;
     flex-shrink: 0;
+    transition: all .1s ease-out;
+
 }
 
 #layout-right {
