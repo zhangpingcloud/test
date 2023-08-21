@@ -5,15 +5,22 @@
 import Layout from './layout/index.vue';
 import LayoutAside from './layout/aside.vue';
 import LayoutHeader from './layout/header.vue';
+import LayoutMain from './layout/main.vue';
 export default {
   props: [],
+  provide (){
+    return {
+      message: 'hello world'
+    }
+  },
   components: {
     // Card
     // Component08171
     // Component08172
     Layout,
     LayoutAside,
-    LayoutHeader
+    LayoutHeader,
+    LayoutMain
   },
   data(){
     return {
@@ -72,9 +79,22 @@ export default {
       <template v-slot:layout-header>
         <layout-header @handleClickOnHeaderIcon="changeCollapse" :is_collapse="is_collapse" />
       </template>
+      <template v-slot:default>
+        <layout-main>
+          <!-- RouterView是路由的出口 -->
+          <router-link to="/">
+            <button>看板</button>
+          </router-link>
+          <router-link to="/user-role">用户权限</router-link>
+          <router-link to="/user-list">用户列表</router-link>
+          <router-view></router-view>
+        </layout-main>
+      </template>
     </Layout>
 </template>
 
 <style>
-
+h1{
+  font-size: 48px;
+}
 </style>

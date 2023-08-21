@@ -7,3 +7,19 @@ export function queryStudentList(data){
         data
     })
 }
+
+export function queryStudentList(data){
+    return http.request({
+        api: '/examples/query-student-list',
+        method: 'GET',
+        data
+    })
+}
+
+export function queryStudentList(data){
+    return http.request({
+        api: '/examples/query-student-list',
+        method: 'GET',
+        data
+    })
+}

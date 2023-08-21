@@ -1,5 +1,11 @@
 <script>
 export default{
+    inject: {
+        app_message: {
+            from: 'message',
+            default: () => 'default message'
+        }
+    },
     props: {
         is_collapse: {
             type: Boolean,
@@ -9,8 +15,15 @@ export default{
     data(){
         return {
             // is_collapse: false
+            message: ''
         }
     },
+    created(){
+        // console.log(this.app_message);
+    },
+    mounted(){
+        // console.log(this.app_message);
+    }
     
 }
 </script>
@@ -101,6 +114,7 @@ export default{
     /* background-color: #d2568c; */
     background-color: #fff;
     overflow-y: auto;
+    padding: 8px;
     
 }
 </style>
