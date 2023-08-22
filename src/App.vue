@@ -2,10 +2,7 @@
 // import Card from './components/Card.vue';
 // import Component08171 from './views/08-17/01作业.vue';
 // import Component08172 from './views/08-17/02Props.vue';
-import Layout from './layout/index.vue';
-import LayoutAside from './layout/aside.vue';
-import LayoutHeader from './layout/header.vue';
-import LayoutMain from './layout/main.vue';
+
 export default {
   props: [],
   provide (){
@@ -17,10 +14,7 @@ export default {
     // Card
     // Component08171
     // Component08172
-    Layout,
-    LayoutAside,
-    LayoutHeader,
-    LayoutMain
+
   },
   data(){
     return {
@@ -41,6 +35,9 @@ export default {
       //   },
       // ]
     }
+  },
+  beforeCreate(){
+    // initRoutes(routes);
   },
   methods: {
     change(data){
@@ -68,11 +65,7 @@ export default {
        </template>
        <span>新增</span>
     </Component08172> -->
-    <Layout :is_collapse="is_collapse">
-      <!-- 路由 -->
-      <!-- <div style="width: 30px;height: 3000px;background-color: red;">
-
-      </div> -->
+    <!-- <Layout :is_collapse="is_collapse">
       <template v-slot:layout-aside>
         <layout-aside :is_collapse="is_collapse" />
       </template>
@@ -81,16 +74,11 @@ export default {
       </template>
       <template v-slot:default>
         <layout-main>
-          <!-- RouterView是路由的出口 -->
-          <router-link to="/">
-            <button>看板</button>
-          </router-link>
-          <router-link to="/user-role">用户权限</router-link>
-          <router-link to="/user-list">用户列表</router-link>
           <router-view></router-view>
         </layout-main>
       </template>
-    </Layout>
+    </Layout> -->
+    <router-view></router-view>
 </template>
 
 <style>

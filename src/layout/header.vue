@@ -1,6 +1,7 @@
 <script>
 import IconSS from '../images/icon/icon-ss.png';
 import IconPS from '../images/icon/icon-ps.png';
+import {not_valid_list} from '../router'
 export default{
     props: {
         is_collapse: {
@@ -23,6 +24,17 @@ export default{
             this.$emit('handleClickOnHeaderIcon', {
                 is_collapse: !this.is_collapse
             })
+        },
+        logout(){
+            localStorage.clear();
+            sessionStorage.clear();
+            const routes = this.$router.getRoutes();
+            for(let route of routes){
+                if(!not_valid_list.includes(route.name)){
+                    this.$router.removeRoute(route.name)
+                }
+            }
+            this.$router.replace('/login')
         }
     },
     created(){
@@ -37,7 +49,7 @@ export default{
             <img @click="clickOnHeaderIcon" :src="current_icon" alt="收起">
         </div>
         <div id="header-right">
-
+            <button @click="logout">退出登录</button>
         </div>
     </div>
 </template>

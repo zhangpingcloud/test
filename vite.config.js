@@ -12,5 +12,19 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  build: {
+    rollupOptions: {
+      // https://rollupjs.org/guide/en/#outputmanualchunks
+      output: {
+        manualChunks: {
+          'user': [
+            './src/views/User/UserDetail.vue',
+            './src/views/User/UserList.vue',
+            './src/views/User/UserRole.vue',
+          ],
+        },
+      },
+    },
+  },
 })

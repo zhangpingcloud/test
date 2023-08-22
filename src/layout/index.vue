@@ -1,5 +1,14 @@
 <script>
-export default{
+import Layout from './index.vue';
+import LayoutAside from './aside.vue';
+import LayoutHeader from './header.vue';
+import LayoutMain from './main.vue';
+export default {
+    components: {
+        LayoutAside,
+        LayoutHeader,
+        LayoutMain
+    },
     inject: {
         app_message: {
             from: 'message',
@@ -12,37 +21,46 @@ export default{
             default: () => false
         }
     },
-    data(){
+    data() {
         return {
             // is_collapse: false
             message: ''
         }
     },
-    created(){
+    created() {
         // console.log(this.app_message);
     },
-    mounted(){
+    mounted() {
         // console.log(this.app_message);
     }
-    
+
 }
 </script>
 <template>
     <div id="layout">
         <!-- 两栏布局，左侧固定，右侧自适应 -->
-        <div id="layout-left" :style="{ width: is_collapse ? '65px': '240px'}">
-            <slot name="layout-aside"></slot>
+        <div id="layout-left" :style="{ width: is_collapse ? '65px' : '240px' }">
+            <!-- <slot name="layout-aside"></slot> -->
+            <layout-aside></layout-aside>
         </div>
         <div id="layout-right">
             <div id="layout-header">
-                <slot name="layout-header"></slot>
+                <!-- <slot name="layout-header"></slot> -->
+                <layout-header></layout-header>
             </div>
             <div id="tag-list">
                 <div class="tag">首页</div>
                 <div class="tag">用户列表</div>
             </div>
             <div id="layout-main">
-                    <slot></slot>
+                <!-- <slot></slot> -->
+                <!-- <router-view></router-view> -->
+                <router-view v-slot="{ Component }">
+                    <transition name="fade">
+                        <component :is="Component" />
+                    </transition>
+                </router-view>
+                <!-- <router-view name="UserList"></router-view> -->
             </div>
         </div>
     </div>
@@ -108,6 +126,7 @@ export default{
     margin-right: 6px;
 
 }
+
 #layout-main {
     height: 100%;
     margin: 0 10px;
@@ -115,6 +134,16 @@ export default{
     background-color: #fff;
     overflow-y: auto;
     padding: 8px;
-    
+
+}
+.fade-enter-active {
+    transition: opacity .1s ease-out;
+}
+
+.fade-enter-from, .fade-leave-to {
+    opacity: 0;
+}
+.fade-enter-to, .fade-leave-from {
+    opacity: 1;
 }
 </style>
