@@ -44,7 +44,7 @@ export const routes = [
                 name: 'Login',
                 root: false,
                 meta: {
-                    title: '登录',
+                    icon: undefined
                 },
                 component: Login,
             },
@@ -53,6 +53,9 @@ export const routes = [
                 title: '404',
                 name: 'NotFound',
                 root: false,
+                meta: {
+                    icon: undefined
+                },
                 component: NotFound,
             },
         ]
@@ -134,8 +137,6 @@ router.beforeEach((to, from, next) => {
     // return '/login'
     // console.log(to);
     const routes = router.getRoutes();
-    console.log(routes.length);
-    console.log(routes);
     const token = localStorage.getItem('token');
     
     if(token && to.name === 'Login'){
@@ -143,7 +144,6 @@ router.beforeEach((to, from, next) => {
         return 
     }
     if (token && routes.length === 2) {
-        const remove_list = [];
         for (let route of all_routes) {
             router.addRoute(route);
         }

@@ -16,6 +16,9 @@ export default [
                 title: '数据看板',
                 name: 'DashBoard',
                 root: false,
+                meta: {
+                    icon: 'icon-data-view'
+                },
                 component: DashBoard,
             }
         ]
@@ -32,6 +35,9 @@ export default [
                 title: '关于项目',
                 name: 'AboutProject',
                 root: false,
+                meta: {
+                    icon: 'icon-file'
+                },
                 component: AboutProject,
             }
         ]

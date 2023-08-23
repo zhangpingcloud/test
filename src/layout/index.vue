@@ -1,4 +1,5 @@
 <script>
+import { mapState } from 'vuex';
 import Layout from './index.vue';
 import LayoutAside from './aside.vue';
 import LayoutHeader from './header.vue';
@@ -15,17 +16,22 @@ export default {
             default: () => 'default message'
         }
     },
-    props: {
-        is_collapse: {
-            type: Boolean,
-            default: () => false
-        }
-    },
+    // props: {
+    //     is_collapse: {
+    //         type: Boolean,
+    //         default: () => false
+    //     }
+    // },
     data() {
         return {
             // is_collapse: false
             message: ''
         }
+    },
+    computed: {
+        ...mapState({
+            is_collapse: state => state.collapse
+        })
     },
     created() {
         // console.log(this.app_message);

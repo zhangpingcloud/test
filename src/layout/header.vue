@@ -2,28 +2,31 @@
 import IconSS from '../images/icon/icon-ss.png';
 import IconPS from '../images/icon/icon-ps.png';
 import {not_valid_list} from '../router'
+import { CHANGECOLLAPSE } from '../store';
 export default{
-    props: {
-        is_collapse: {
-            type: Boolean,
-            default: () => false
-        }
-    },
+    
     data(){
         return {
         }
     },
     computed: {
         current_icon(){
-            return this.is_collapse ? IconSS : IconPS
+            return this.$store.state.collapse ? IconSS : IconPS
         }
     },
     methods: {
         clickOnHeaderIcon(){
+            // console.log(this.$store);
+            // console.log(this.$store.state.user.user_list);
             // console.log(this.is_collapse);
-            this.$emit('handleClickOnHeaderIcon', {
-                is_collapse: !this.is_collapse
+            // this.$emit('handleClickOnHeaderIcon', {
+            //     is_collapse: !this.is_collapse
+            // })
+            this.$store.dispatch(CHANGECOLLAPSE, {
+                name: '张三'
             })
+
+            // this.$store.dispatch('user/getUserList')
         },
         logout(){
             localStorage.clear();

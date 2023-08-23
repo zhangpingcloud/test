@@ -19,7 +19,7 @@ export default {
   data(){
     return {
       title: '通过Vite构建工具启动vue项目',
-      is_collapse: false
+      // is_collapse: false
       // project_list: [
       //   {
       //     title: '英雄联盟',
@@ -47,6 +47,15 @@ export default {
       this.is_collapse = data.is_collapse;
     }
   },
+  created(){
+
+  },
+  beforeUnmount(){
+    localStorage.setItem('data', 123456)
+  },
+  beforeDestroy(){
+
+  }
 }
 </script>
 

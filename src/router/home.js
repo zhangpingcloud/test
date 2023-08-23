@@ -23,6 +23,9 @@ export default {
     root: true,
     component: Layout,
     redirect: '/home/nav',
+    meta: {
+        icon: 'icon-electronics'
+    },
     children: [
         {
             path: '/home/nav',

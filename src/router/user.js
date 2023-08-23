@@ -16,6 +16,9 @@ export default  {
     root: true,
     component: Layout,
     redirect: '/user/user-list',
+    meta: {
+        icon: 'icon-user-filling'
+    },
     children: [
         {
             path: '/user/user-role',
